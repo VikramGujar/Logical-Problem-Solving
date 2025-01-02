@@ -2,25 +2,30 @@ package com.logical.jan_02;
 
 public class Institute 
 {
-	private Student[] students;
-	private int capacity;
-	private int size;
+	private Student[] students;	// Student type array
+	private int capacity;		// Initial capacity for array 
+	private int size;			// size of array [ how many elements ]
 	
+	// getter for Capacity
 	public int getCapacity() {
 		return capacity;
 	}
-
+	// getter for Size
 	public int getSize() {
 		return size;
 	}
 
+	// Constructor for initialization
 	public Institute(int capacity) 
 	{
 		super();
 		this.capacity = capacity;
+		
+		// Assign new array with user defined capacity
 		this.students = new Student[capacity];
 	}
 	
+	// Add's student object in array
 	public void add(Student obj)
 	{
 		if(size<capacity)
@@ -30,6 +35,7 @@ public class Institute
 		
 	}
 	
+	// Add student at specific index
 	public void addToIndex(int index, Student obj)
 	{
 		if(index<0 || index>capacity || index>size)
@@ -47,6 +53,7 @@ public class Institute
 		}
 	}
 	
+	// Get student by index
 	public Student getByIndex(int index)
 	{
 		if(index<0 || index>capacity || index>size)
@@ -56,7 +63,7 @@ public class Institute
 	}
 	
 	
-	
+	// Remove Student object by index
 	public void removeByIndex(int index)
 	{
 		if(index<0 || index>capacity || index>size)
@@ -74,26 +81,26 @@ public class Institute
 		}
 	}
 	
-	 
-	   public void removeByGender(String gender)
-	   {
-		   String g = gender;
-		   
-		   for(int i=0; i<size; i++)
-		   {
-			   
-			   if(students[i].getGender().equalsIgnoreCase(gender))
-			   for(int j=i; j<size-1; j++)
-			   {
-				   students[j] = students[j+1];
-				   
-			   }
-			   students[size-1]=null;
-			   size--;
-			   i--;
-		   }
+	   // Remove Student by gender
+		public void removeByGender(String gender) 
+		{
+			for (int i = 0; i < size; i++) 
+			{
+				if (students[i] != null && students[i].getGender().equalsIgnoreCase(gender)) 
+				{
+					for (int j = i; j < size - 1; j++) 
+					{
+						students[j] = students[j + 1];
+					}
+					students[size - 1] = null;
+					size--;
+					i--; 
+	            }
+	       }
 	   }
+
 	   
+	   // Replace Student by index
 	   public void replaceStudentOnIndex(int index, Student st )
 	   {
 		   if(index<0 || index>capacity || index>size)
@@ -104,7 +111,7 @@ public class Institute
 		   students[index] = st;
 	   }
 	 
-	   
+	   // Group Studen by gender 
 	   public Student[] groupByGender(String gender)
 	   {
 		   Student[] genderGroup = new Student[size];
@@ -117,12 +124,32 @@ public class Institute
 		   
 		   return genderGroup;
 	   }
-	   // 8. check the give student is present or not[contains(Student obj)]
 	   
-	   // 9. clear all the student list [clear()]
+	   // Check student is present or not
+	   public boolean isPresent(Student std)
+	   {
+		   for(int i=0; i<size; i++)
+		   {
+			   
+			   if(students[i]!=null && students[i].equals(std))
+				   return true;
+		   }
+		   return false;
+	   }
 	   
-	   // 10. Display the list of student
-	
+	   
+	// Clear all Students
+	   public void clearAll()
+	   {
+		   for(int i=0; i<size; i++)
+		   {
+			   students[i] = null;
+		   }
+		   size = 0;
+	   }
+	   
+	   
+	// Display all Students
 	public void display()
 	{
 		for(Object o: students)

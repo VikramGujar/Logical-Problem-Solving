@@ -17,6 +17,7 @@ public class StudentMain
 		Student s10 = new Student(120, "Sneha Joshi", 93.2, "Economics", "Female");
 		
 		Institute i = new Institute(10);
+		
 		i.add(s1);
 		i.add(s2);
 		i.addToIndex(0, s3);
@@ -27,25 +28,56 @@ public class StudentMain
 		i.add(s8);
 		i.add(s9);
 		i.add(s10);
+		
+		System.out.println("=======================================================");
 		i.display();
+		System.out.println("\n\n=======================================================");
+		
+		
+		System.out.println("=======================================================");
 		System.out.println("\nStudent at index 1");
 		System.out.println(i.getByIndex(1));
+		System.out.println("=======================================================");
+		
+		
+		
+		
+		System.out.println("=======================================================");
 		i.removeByIndex(0);
 		System.out.println("\nAfter remove!");
 		i.display();
+		System.out.println("=======================================================");
 		
 		
+		
+		System.out.println("=======================================================");
 		i.removeByGender("Female");
 		System.out.println("After remove gender");
-		i.display();
+     	i.display();
+		System.out.println("=======================================================");
 		
+
+		System.out.println("=======================================================");
 		System.out.println("Group by gender Male");
 		for(Object o: i.groupByGender("Male"))
 			if(o!=null)
 			System.out.println(o);
+		System.out.println("=======================================================");
 		
+		
+	
+		System.out.println("=======================================================");
+		Student s11 = new Student(999, "Manoj", 76.98, "DSML", "Male");
+		System.out.println("\nIs student present : "+i.isPresent(s11));
+		System.out.println("=======================================================");
+		
+		
+		System.out.println("=======================================================");
+		i.clearAll();
 		System.out.println("Capacity : "+i.getCapacity());
 		System.out.println("Size : "+i.getSize());
+		System.out.println("=======================================================");
+		
 	}
 
 }
