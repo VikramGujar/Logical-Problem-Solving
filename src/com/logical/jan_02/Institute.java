@@ -94,10 +94,29 @@ public class Institute
 		   }
 	   }
 	   
-	   // 6. Replace student[set(int index, Student newObj)]
+	   public void replaceStudentOnIndex(int index, Student st )
+	   {
+		   if(index<0 || index>capacity || index>size)
+				System.err.println("Invalid Index!");
+		   if(st==null)
+			   System.err.println("Object refering to null");
+		   
+		   students[index] = st;
+	   }
+	 
 	   
-	   // 7. find and return all the male students or female student based on gender[groupingBy(String gender)]
-	   
+	   public Student[] groupByGender(String gender)
+	   {
+		   Student[] genderGroup = new Student[size];
+		   int start=0;
+		   for(int i=0; i<size; i++)
+		   {
+			   if(students[i]!=null && students[i].getGender().equalsIgnoreCase(gender))
+				   genderGroup[start++] = students[i];
+		   }
+		   
+		   return genderGroup;
+	   }
 	   // 8. check the give student is present or not[contains(Student obj)]
 	   
 	   // 9. clear all the student list [clear()]

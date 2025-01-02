@@ -20,19 +20,32 @@ public class StudentMain
 		i.add(s1);
 		i.add(s2);
 		i.addToIndex(0, s3);
-		
+		i.add(s4);
+		i.add(s5);
+		i.add(s6);
+		i.add(s7);
+		i.add(s8);
+		i.add(s9);
+		i.add(s10);
 		i.display();
 		System.out.println("\nStudent at index 1");
 		System.out.println(i.getByIndex(1));
 		i.removeByIndex(0);
 		System.out.println("\nAfter remove!");
 		i.display();
-		System.out.println("Capacity : "+i.getCapacity());
-		System.out.println("Size : "+i.getSize());
+		
 		
 		i.removeByGender("Female");
 		System.out.println("After remove gender");
 		i.display();
+		
+		System.out.println("Group by gender Male");
+		for(Object o: i.groupByGender("Male"))
+			if(o!=null)
+			System.out.println(o);
+		
+		System.out.println("Capacity : "+i.getCapacity());
+		System.out.println("Size : "+i.getSize());
 	}
 
 }
