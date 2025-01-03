@@ -28,7 +28,7 @@ public class StudentMain
 		i.add(s8);
 		i.add(s9);
 		i.add(s10);
-		
+		/*
 		System.out.println("=======================================================");
 		i.display();
 		System.out.println("\n\n=======================================================");
@@ -56,7 +56,7 @@ public class StudentMain
      	i.display();
 		System.out.println("=======================================================");
 		
-
+		
 		System.out.println("=======================================================");
 		System.out.println("Group by gender Male");
 		for(Object o: i.groupByGender("Male"))
@@ -77,6 +77,28 @@ public class StudentMain
 		System.out.println("Capacity : "+i.getCapacity());
 		System.out.println("Size : "+i.getSize());
 		System.out.println("=======================================================");
+		
+		
+		System.out.println("=======================================================");
+		i.add(new Student(0, "MyName", 87, "Math", "Male"));
+		i.display();
+		System.out.println();
+		System.out.println("Capacity : "+i.getCapacity());
+		System.out.println("Size : "+i.getSize());
+		System.out.println("=======================================================");
+		*/
+		
+		
+		System.out.println("=======================================================");
+		i.add(new Student(0, "MyName", 87, "Math", "Male"));
+		i.trimToSize();
+		i.display();
+		System.out.println();
+		System.out.println("Capacity : "+i.getCapacity());
+		System.out.println("Size : "+i.getSize());
+		System.out.println("=======================================================");
+		
+		
 		
 	}
 

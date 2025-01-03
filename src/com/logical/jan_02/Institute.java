@@ -1,5 +1,9 @@
 package com.logical.jan_02;
 
+import java.util.Arrays;
+import java.util.Vector;
+import java.util.function.Predicate;
+
 public class Institute 
 {
 	private Student[] students;	// Student type array
@@ -25,15 +29,23 @@ public class Institute
 		this.students = new Student[capacity];
 	}
 	
+	 // To make array dinimically groable
+	 public void grow() 
+	 {
+	       int newCapacity = capacity*2;
+	       
+	        Student[] newArray = Arrays.copyOf(students, newCapacity);
+	       students = newArray;
+	       capacity = newCapacity;
+	   }
+	
 	// Add's student object in array
-	public void add(Student obj)
-	{
-		if(size<capacity)
-			students[size++] = obj;
-		else
-			System.err.println("List is full");
-		
-	}
+	 public void add(Student obj) 
+	 {
+	       if (size == capacity) 
+	           grow();
+	       students[size++] = obj;
+	   }
 	
 	// Add student at specific index
 	public void addToIndex(int index, Student obj)
@@ -92,9 +104,9 @@ public class Institute
 					{
 						students[j] = students[j + 1];
 					}
-					students[size - 1] = null;
-					size--;
 					i--; 
+					size--;
+					students[size] = null;
 	            }
 	       }
 	   }
@@ -128,35 +140,68 @@ public class Institute
 	   // Check student is present or not
 	   public boolean isPresent(Student std)
 	   {
-		   for(int i=0; i<size; i++)
-		   {
-			   
-			   if(students[i]!=null && students[i].equals(std))
-				   return true;
-		   }
-		   return false;
+		   boolean present = false;
+	        for(int i = 0;i<size;i++) {
+	            if(students[i]!=null && students[i].equals(std)) {
+	               present = true;
+	               break;
+	            }
+	        }
+	        return present;
 	   }
 	   
 	   
 	// Clear all Students
 	   public void clearAll()
-	   {
-		   for(int i=0; i<size; i++)
-		   {
-			   students[i] = null;
-		   }
-		   size = 0;
+	   {	   
+		   students = new Student[capacity];
+	        size = 0;
 	   }
+	   
+	   // Checks weather the list is empty or not
+	   public boolean isEmpty()
+	   {
+		   return size==0;
+	   }
+	   
+	   // Trims the array to the size 
+	   public void trimToSize()
+	   {
+		  if(size<capacity)
+		  {
+			  students = Arrays.copyOf(students, size);
+			  capacity = size;
+		  }
+	   }
+	   
 	   
 	   
 	// Display all Students
 	public void display()
 	{
+		if(size==0)
+			System.out.println("[]");
+		else
 		for(Object o: students)
 			if(o!=null)
 				System.out.println(o);
 	}
 	
 	
-	
+	// Remove student by marks
+    public boolean removeIf(Predicate<Double> predicate) 
+    {
+       boolean found = false;
+       for(int i = 0;i<size;i++) {
+           if(predicate.test(students[i].getMarks())) {
+        	   removeByIndex(i);
+               found = true;
+               i--;
+           }
+       }
+       return found;
+    }
 }
+	
+	
+

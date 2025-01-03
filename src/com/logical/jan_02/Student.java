@@ -66,6 +66,21 @@ public class Student
 		return gender;
 	}
 
+	public boolean equals(Object obj) {
+	       if(obj == null) 
+	    	   return false;
+	       
+	       if(this == obj) 
+	    	   return true;
+	       
+	       if(obj instanceof Student) {
+	           Student s = (Student) obj;
+	           return this.id == s.id && this.name.equals(s.name)
+	                   && this.course.equals(s.course) && this.marks == s.marks
+	                   && this.gender.equals(s.gender);
+	       }
+	       return false;
+	   }
 
 	@Override
 	public String toString() {
