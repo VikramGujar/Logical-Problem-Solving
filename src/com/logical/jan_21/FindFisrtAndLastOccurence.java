@@ -25,6 +25,8 @@ public class FindFisrtAndLastOccurence
 		String s = "Hello World";
 		char occurenceToCheck = 'o';
 		findFisrtAndLastOccurence(s, occurenceToCheck);
+		//indexOf()
+		//lastIndexOf()
 	}
 
 }
